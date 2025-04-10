@@ -29,17 +29,15 @@ public class ArticleServiceTest {
 
     @Test
     public void testSupprimerArticle() {
-        // Récupérer les articles existants
+
         List<Article> articles = service.getTousLesArticles();
         assertFalse(articles.isEmpty(), "La liste d'articles ne doit pas être vide");
 
         int tailleAvant = articles.size();
         int idASupprimer = articles.get(0).getId(); // Suppression du premier
 
-        // Supprimer un article existant
         boolean supprimé = service.supprimerArticle(idASupprimer);
 
-        // Vérifications
         assertTrue(supprimé, "L'article doit être supprimé");
         assertEquals(tailleAvant - 1, service.getTousLesArticles().size(), "La taille doit diminuer de 1");
     }
